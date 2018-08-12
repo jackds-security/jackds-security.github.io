@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head id="ctl00_Head1"><link href="App_Themes/MarineNet/Default.css" type="text/css" rel="stylesheet" /><title>
+	MarineNet Distance Learning Home
+</title><link id="ctl00_linkStyle" rel="Stylesheet" href="Assets/Css/FontSmall.css" /><link id="ctl00_Link1" rel="Stylesheet" href="Assets/Css/Default.css" /><link id="ctl00_Link2" rel="Stylesheet" href="Assets/Css/GUI.css" /><link href="Assets/JS/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" /> 
+  <style type="text/css">
+  .ui-tooltip {
+    display: inline-block;
+    background: #FAFAD2;
+    margin: 0px;
+    padding: 0px;
+    border-color: black;
+  }
+  </style>
+<script type="text/javascript" src="/MarineNet/Assets/JS/jquery-2.1.4.min.js"></script><script type="text/javascript" src="/MarineNet/Assets/JS/jquery-ui-1.12.1/jquery-ui-1.12.1.js"></script><script type="text/javascript" src="/MarineNet/Assets/JS/PleaseWaitLoading.js"></script><script>$.noConflict();</script><script type="text/javascript" src="/MarineNet/Assets/JS/common.js"></script><script type="text/javascript" src="/MarineNet/Assets/JS/SessionTimeout.js"></script></head>
+<body id="body" onload="timeIt('');">
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery("img[alt],[title]").tooltip({
+
+                content: function () {
+                    var element = jQuery(this);
+                    if (element.is("[title]")) {
+                        if (element.attr("title").length)
+                            return element.attr("title")
+                        else {
+                            return element.attr("alt");
+                        }
+                    }
+                    if (element.is("[img]")) {
+                        return element.attr("alt");
+                    }
+                }
+            });
+        });
+  </script>
+   <center><form name="timerform" action="/" >
+	  <input type="hidden" name="sessionid" />
+	  <input type="hidden" name="clock" value="60"/>
+	  <input type="hidden" name="resetTime" value="60" />
+	  <input type="hidden" name="redirectedUrl" value="/marinenet/SessionTimeoutRedirect.aspx" />
+   </form></center>
+	<form method="post" action="./" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTkwNzg3MTg2OQ8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgJmDw8WBB4PX19BbnRpWHNyZlRva2VuBSAzODZmOTdmZWY3Y2Q0MDVjYTVhMjljOGY2NDJlZWRmNR4SX19BbnRpWHNyZlVzZXJOYW1lZWQWBGYPZBYCAgIPFgIeBGhyZWYFGEFzc2V0cy9Dc3MvRm9udFNtYWxsLmNzc2QCAQ9kFiYCBQ8PFgIeC1Bvc3RCYWNrVXJsBQ5+L0RlZmF1bHQuYXNweGRkAgkPDxYCHgdWaXNpYmxlaGRkAgsPDxYCHwVoZGQCDQ8PFgIfBWhkZAIPDw8WAh8FaGRkAhEPZBYCAgkPPCsABQEADxYCHwVoZGQCEw8WAh8FaBYEZg9kFgICAQ9kFgICBQ9kFgICAQ88KwANAQAPFgIeCUFjY2Vzc0tleQUBTWRkAgEPZBYCAgEPZBYCAgMPD2QWAh4Fc3R5bGUFGWJvcmRlcjogc29saWQgMXB4ICNBQ0E4OTlkAhUPFgIfBwUZYmFja2dyb3VuZC1jb2xvcjojMjcyNzI3OxYCAgEPZBYEZg8PFgIeBFRleHRlZGQCAQ9kFgICAQ9kFgICAQ9kFgJmD2QWAgIBD2QWAgIRDw8WAh8IBWBJbiBvcmRlciB0byBsb2dpbiB3aXRoIHlvdXIgQ0FDLCB5b3UgbXVzdCBjbG9zZSB5b3VyIGJyb3dzZXIgYW5kIHJlc3RhcnQgdGhlIE1hcmluZU5ldCB3ZWIgc2l0ZS5kZAIXD2QWAgIBD2QWBGYPZBYIZg8QZA8WA2YCAQICFgMQBQ5HRVRUSU5HIEFDQ0VTUwUKQWNjZXNzVmlld2cQBRFSRUxBVEVEIFJFU09VUkNFUwUNUmVzb3VyY2VzVmlld2cQBRJDT1VSU0UgREVWRUxPUE1FTlQFD0RldmVsb3BtZW50Vmlld2cWAGQCBA8QZGQWAWZkAgYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmDw8WBB4IQ3NzQ2xhc3MFE0JXU2VsZWN0ZWRUb3BCb3JkZXIeBF8hU0ICAmRkAggPDxYCHwVoZGQCAg9kFgZmD2QWAgIBDxYCHwgFlSE8cD48c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+ICAgIChmdW5jdGlvbigpeyAgICAgaWYod2luZG93LmFkZEV2ZW50TGlzdGVuZXIpIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJsb2FkIiwgZml4T3RoZXJQb3J0YWxzTGluaywgZmFsc2UpOyAgICAgZWxzZSBpZih3aW5kb3cuYXR0YWNoRXZlbnQpIHdpbmRvdy5hdHRhY2hFdmVudCgib25sb2FkIiwgZml4T3RoZXJQb3J0YWxzTGluayk7ICAgICBmdW5jdGlvbiBmaXhPdGhlclBvcnRhbHNMaW5rKGV2dCl7ICAgICAgdmFyIHJpZ2h0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImN0bDAwX3RkUmlnaHRDb2x1bW4iKTsgICAgICBpZighcmlnaHQpIHJldHVybjsgICAgICB2YXIgYSA9IHJpZ2h0LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJhIik7ICAgICAgZm9yKHZhciBpPTA7IGk8YS5sZW5ndGg7IGkrKykgICAgICB7ICAgICAgIGlmKGFbaV0uaHJlZi5jaGFyQXQoYVtpXS5ocmVmLmxlbmd0aC0xKSA9PSAiIyIgJiYgYVtpXS5pbm5lckhUTUwgPT0gIlBvcnRhbHMiKSAgICAgICB7ICAgICAgICBhW2ldLnRhcmdldCA9ICIiOyAgICAgICAgYVtpXS5jbGFzc05hbWUgKz0gIiBMaW5rRW1waGFzaXMiOyAgICAgICAgaWYoYVtpXS5zdHlsZSkgYVtpXS5zdHlsZS50ZXh0RGVjb3JhdGlvbiA9ICJub25lIjsgICAgICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyID8gYVtpXS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGNhbmNlbExpbmssIGZhbHNlKSA6IGFbaV0uYXR0YWNoRXZlbnQoIm9uY2xpY2siLCBjYW5jZWxMaW5rKTsgICAgICAgIGJyZWFrOyAgICAgICB9ICAgICAgfSAgICAgfSAgICAgZnVuY3Rpb24gY2FuY2VsTGluayhldnQpICAgICB7ICAgICAgZXZ0ID0gZXZ0IHx8IHdpbmRvdy5ldmVudDsgICAgICB2YXIgYSA9IGV2dC50YXJnZXQgfHwgZXZ0LnNyY0VsZW1lbnQ7ICAgICAgZXZ0LnByZXZlbnREZWZhdWx0ID8gZXZ0LnByZXZlbnREZWZhdWx0KCkgOiBldnQucmV0dXJuVmFsdWUgPSBmYWxzZTsgICAgICBldnQuc3RvcFByb3BhZ2F0aW9uID8gZXZ0LnN0b3BQcm9wYWdhdGlvbigpIDogZXZ0LmNhbmNlbEJ1YmJsZSA9IHRydWU7ICAgICB9ICAgIH0pKCk7ICAgPC9zY3JpcHQ+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uY2RldCBoMnttYXJnaW46MS42MjVlbSAwfS5jZGV0IG9sLC5jZGV0IHVse21hcmdpbi1sZWZ0OjA7cGFkZGluZy1sZWZ0OjEuMjVlbX0uY2RldCBvbHtwYWRkaW5nLWxlZnQ6MmVtfS5jZGV0IGFiYnIsLmNkZXQgYWNyb255bXtib3JkZXItYm90dG9tOjB9ICAgI2N0bDAwX2NvbnRlbnRfZHZUTVJlcXVlc3R7bWFyZ2luLXRvcDotMi41ZW19PC9zdHlsZT48L3A+DQo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+ICAgICAgdmFyIF9nYXEgPSBfZ2FxIHx8IFtdOyAgICBfZ2FxLnB1c2goWydfc2V0QWNjb3VudCcsICdVQS0xNzcxMTU1OC0xJ10pOyAgICBfZ2FxLnB1c2goWydfdHJhY2tQYWdldmlldyddKTsgICAgICAoZnVuY3Rpb24oKSB7ICAgICAgdmFyIGdhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7IGdhLnR5cGUgPSAndGV4dC9qYXZhc2NyaXB0JzsgZ2EuYXN5bmMgPSB0cnVlOyAgICAgIGdhLnNyYyA9ICgnaHR0cHM6JyA9PSBkb2N1bWVudC5sb2NhdGlvbi5wcm90b2NvbCA/ICdodHRwczovL3NzbCcgOiAnaHR0cDovL3d3dycpICsgJy5nb29nbGUtYW5hbHl0aWNzLmNvbS9nYS5qcyc7ICAgICAgdmFyIHMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc2NyaXB0JylbMF07IHMucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUoZ2EsIHMpOyAgICB9KSgpOyAgICA8L3NjcmlwdD4NCjxkaXYgY2xhc3M9ImNkZXQiPg0KPHA+SWYgeW91IGFyZSBhIGNpdmlsaWFuIG9yIG5vbi1Eb0QgaW5kaXZpZHVhbCBhbmQgeW91IHdvdWxkIGxpa2UgYSBNYXJpbmVOZXQgYWNjb3VudCwgcGxlYXNlIFNpZ24gVXAgZm9yIGEgTmV3IE1hcmluZU5ldCBBY2NvdW50IDxhIGhyZWY9IkVkaXRQcm9maWxlLmFzcHgiPnJlcXVlc3RpbmcgYSBNYXJpbmVOZXQgYWNjb3VudDwvYT4uIFlvdXIgZWxpZ2liaWxpdHkgaW5mb3JtYXRpb24gd2lsbCBiZSB2ZXJpZmllZCBhZ2FpbnN0IHRoZSBEZWZlbnNlIEVucm9sbG1lbnQgRWxpZ2liaWxpdHkgUmVwb3J0aW5nIFN5c3RlbSAoREVFUlMpLiBJZiB5b3UgYXJlIHJlZ2lzdGVyZWQgaW4gdGhlIDxhY3JvbnltIHRpdGxlPSJEZWZlbnNlIEVucm9sbG1lbnQgRWxpZ2liaWxpdHkgUmVwb3J0aW5nIFN5c3RlbSI+REVFUlM8L2Fjcm9ueW0+LCB5b3Ugd2lsbCBsaWtlbHkgaGF2ZSBhY2Nlc3MgdG8gTWFyaW5lTmV0LiBJZiB5b3UgYXJlIG5vdCBpbiA8YWNyb255bSB0aXRsZT0iRGVmZW5zZSBFbnJvbGxtZW50IEVsaWdpYmlsaXR5IFJlcG9ydGluZyBTeXN0ZW0iPkRFRVJTPC9hY3JvbnltPiwgYW4gYWx0ZXJuYXRlIHBhdGggZm9yIE1hcmluZU5ldCBBY2NvdW50IGNyZWF0aW9uIGlzIGFsc28gYXZhaWxhYmxlIHRocm91Z2ggdGhlIFNpZ24gVXAgZm9yIGEgTmV3IE1hcmluZU5ldCBBY2NvdW50IHByb2Nlc3MuIDwvcD4NCjxwPk9uY2UgeW91IGhhdmUgbG9nZ2VkIGludG8gTWFyaW5lTmV0LCB5b3UgY2FuIGFjY2VzcyB0aGUgQWN0aW9ucyBtZW51IG9uIHRoZSBsZWZ0IG5hdmlnYXRpb24gYmFyIHRvIGFjY2VzcyB5b3VyIHRyYW5zY3JpcHQgYW5kIHRoZSBjb3Vyc2UgY2F0YWxvZy4gTWFyaW5lTmV0IE5ld3MgYW5kIEluZm9ybWF0aW9uIGlzIGFjY2Vzc2libGUgZnJvbSB0aGUgcmlnaHQgbmF2aWdhdGlvbiBiYXIuIExlYXJuIGFib3V0IHRoZSBsYXRlc3QgTWFyaW5lTmV0IGhhcyB0byBvZmZlciBieSByZXZpZXdpbmcgdGhlc2UgYXJ0aWNsZXMuPC9wPg0KPHA+V2lsbCB5b3VyIGNvbXB1dGVyIHN1cHBvcnQgY291cnNld2FyZT8gQ2hlY2sgb3V0IHRoZSA8YSBocmVmPSJwb3J0YWwvUGFnZVZpZXcuYXNweD9wZz1Db21wdXRlclJlcXVpcmVtZW50cy5hc3B4Ij5NYXJpbmVOZXQgU29mdHdhcmUgQmFzZWxpbmUgUmVxdWlyZW1lbnRzPC9hPi48L3A+DQo8aDI+TGVhcm5pbmcgUmVzb3VyY2UgQ2VudGVyczwvaDI+DQo8cD5BY2Nlc3MgdG8gZWxlY3Ryb25pYyBjb3Vyc2V3YXJlIGlzIGF2YWlsYWJsZSBmcm9tIGFueSBuZXR3b3JrLWNvbm5lY3RlZCA8YWJiciB0aXRsZT0icGVyc29uYWwgY29tcHV0ZXIiPlBDPC9hYmJyPi4gSG93ZXZlciwgdGhlIDxhYmJyIHRpdGxlPSJDb2xsZWdlIG9mIERpc3RhbmNlIEVkdWNhdGlvbiBhbmQgVHJhaW5pbmciPkNERVQ8L2FiYnI+IGhhcyBmaWVsZGVkIDxzcGFuIGNsYXNzPSJvYnNvbGV0ZXMiPm1vcmUgdGhhbiA0MDwvc3Bhbj4gbGVhcm5pbmcgcmVzb3VyY2UgY2VudGVycyAoTFJDcykgdG8gcHJvdmlkZSBzZXJ2aWNlIHRvIE1hcmluZXMgd2hvIGRvIG5vdCBoYXZlIGEgY29tcHV0ZXIgYXZhaWxhYmxlIHRvIHRoZW0gcmVndWxhcmx5LiBGb3IgYSBjb21wbGV0ZSBsaXN0IG9mIGxlYXJuaW5nIHJlc291cmNlIGNlbnRlcnMgYW5kIHRoZWlyIGxvY2F0aW9ucywgdmlzaXQgdGhlIDxhIGhyZWY9InBvcnRhbC9QYWdlVmlldy5hc3B4P3BnPUxvY2F0aW9ucy5hc3B4Ij48YWJiciB0aXRsZT0iTGVhcm5pbmcgUmVzb3VyY2UgQ2VudGVyIj5MUkM8L2FiYnI+IFNpdGUgTGlzdGluZzwvYT4uPC9wPg0KPHAgc3R5bGU9ImRpc3BsYXk6bm9uZSI+VGhlIGRlcGxveWFibGUgbGVhcm5pbmcgcmVzb3VyY2UgY2VudGVyIChETFJDKSBpcyBhIGhhcmR3YXJlIGNvbXBvbmVudCBvZiB0aGUgTWFyaW5lIENvcnBzIERpc3RhbmNlIExlYXJuaW5nIFByb2dyYW0gKE1DRExQKSB0aGF0IHByb3ZpZGVzIE1hcmluZXMgd2l0aCBhY2Nlc3MgdG8gZWxlY3Ryb25pYyBjb3Vyc2V3YXJlIHdoaWxlIHRoZXkgYXJlIGRlcGxveWVkIGFib2FyZCBzaGlwIG9yIGZyb20gcmVtb3RlIGxvY2F0aW9ucyBhc2hvcmUuIFRoZSBzeXN0ZW0gb2ZmZXJzIHRoZSBzYW1lIGZ1bmN0aW9uYWxpdHkgYXMgZml4ZWQtc2l0ZSA8YWJiciB0aXRsZT0iTGVhcm5pbmcgUmVzb3VyY2UgQ2VudGVyIj5MUkM8L2FiYnI+cyBhdCBNYXJpbmUgQ29ycHMgYmFzZXMgYW5kIHN0YXRpb25zLCBhbmQgaW5jb3Jwb3JhdGVzIGEgbW9kdWxhciBkZXNpZ24gZm9yIG1heGltdW0gY29uZmlndXJhdGlvbiBmbGV4aWJpbGl0eS48L3A+DQo8cD5SZWFkIG1vcmUgYWJvdXQgPGEgaHJlZj0icG9ydGFsL1BhZ2VWaWV3LmFzcHg/cGc9TFJDc19ETFJDcy5hc3B4Ij5MZWFybmluZyBSZXNvdXJjZSBDZW50ZXJzPC9hPi48L3A+DQo8L2Rpdj4NCjxwPiZuYnNwOzwvcD5kAgEPZBYCAgEPFgIfCGVkAgIPZBYCAgEPFgIfCAXzDzxwPjxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij4gICAgKGZ1bmN0aW9uKCl7ICAgICBpZih3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcikgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoImxvYWQiLCBmaXhPdGhlclBvcnRhbHNMaW5rLCBmYWxzZSk7ICAgICBlbHNlIGlmKHdpbmRvdy5hdHRhY2hFdmVudCkgd2luZG93LmF0dGFjaEV2ZW50KCJvbmxvYWQiLCBmaXhPdGhlclBvcnRhbHNMaW5rKTsgICAgIGZ1bmN0aW9uIGZpeE90aGVyUG9ydGFsc0xpbmsoZXZ0KXsgICAgICB2YXIgcmlnaHQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiY3RsMDBfdGRSaWdodENvbHVtbiIpOyAgICAgIGlmKCFyaWdodCkgcmV0dXJuOyAgICAgIHZhciBhID0gcmlnaHQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoImEiKTsgICAgICBmb3IodmFyIGk9MDsgaTxhLmxlbmd0aDsgaSsrKSAgICAgIHsgICAgICAgaWYoYVtpXS5ocmVmLmNoYXJBdChhW2ldLmhyZWYubGVuZ3RoLTEpID09ICIjIiAmJiBhW2ldLmlubmVySFRNTCA9PSAiUG9ydGFscyIpICAgICAgIHsgICAgICAgIGFbaV0udGFyZ2V0ID0gIiI7ICAgICAgICBhW2ldLmNsYXNzTmFtZSArPSAiIExpbmtFbXBoYXNpcyI7ICAgICAgICBpZihhW2ldLnN0eWxlKSBhW2ldLnN0eWxlLnRleHREZWNvcmF0aW9uID0gIm5vbmUiOyAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIgPyBhW2ldLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgY2FuY2VsTGluaywgZmFsc2UpIDogYVtpXS5hdHRhY2hFdmVudCgib25jbGljayIsIGNhbmNlbExpbmspOyAgICAgICAgYnJlYWs7ICAgICAgIH0gICAgICB9ICAgICB9ICAgICBmdW5jdGlvbiBjYW5jZWxMaW5rKGV2dCkgICAgIHsgICAgICBldnQgPSBldnQgfHwgd2luZG93LmV2ZW50OyAgICAgIHZhciBhID0gZXZ0LnRhcmdldCB8fCBldnQuc3JjRWxlbWVudDsgICAgICBldnQucHJldmVudERlZmF1bHQgPyBldnQucHJldmVudERlZmF1bHQoKSA6IGV2dC5yZXR1cm5WYWx1ZSA9IGZhbHNlOyAgICAgIGV2dC5zdG9wUHJvcGFnYXRpb24gPyBldnQuc3RvcFByb3BhZ2F0aW9uKCkgOiBldnQuY2FuY2VsQnViYmxlID0gdHJ1ZTsgICAgIH0gICAgfSkoKTsgICA8L3NjcmlwdD4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LmNkZXQgaDJ7bWFyZ2luOjEuNjI1ZW0gMH0uY2RldCBvbCwuY2RldCB1bHttYXJnaW4tbGVmdDowO3BhZGRpbmctbGVmdDoxLjI1ZW19LmNkZXQgb2x7cGFkZGluZy1sZWZ0OjJlbX0uY2RldCBhYmJyLC5jZGV0IGFjcm9ueW17Ym9yZGVyLWJvdHRvbTowfSAgICNjdGwwMF9jb250ZW50X2R2VE1SZXF1ZXN0e21hcmdpbi10b3A6LTIuNWVtfQ0KPC9zdHlsZT4NCjwvcD48c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+ICAgICAgdmFyIF9nYXEgPSBfZ2FxIHx8IFtdOyAgICBfZ2FxLnB1c2goWydfc2V0QWNjb3VudCcsICdVQS0xNzcxMTU1OC0xJ10pOyAgICBfZ2FxLnB1c2goWydfdHJhY2tQYWdldmlldyddKTsgICAgICAoZnVuY3Rpb24oKSB7ICAgICAgdmFyIGdhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7IGdhLnR5cGUgPSAndGV4dC9qYXZhc2NyaXB0JzsgZ2EuYXN5bmMgPSB0cnVlOyAgICAgIGdhLnNyYyA9ICgnaHR0cHM6JyA9PSBkb2N1bWVudC5sb2NhdGlvbi5wcm90b2NvbCA/ICdodHRwczovL3NzbCcgOiAnaHR0cDovL3d3dycpICsgJy5nb29nbGUtYW5hbHl0aWNzLmNvbS9nYS5qcyc7ICAgICAgdmFyIHMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc2NyaXB0JylbMF07IHMucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUoZ2EsIHMpOyAgICB9KSgpOyAgICA8L3NjcmlwdD48ZGl2IGNsYXNzPSJjZGV0Ij48aDI+R2V0IEludm9sdmVkPC9oMj48cD5JbnRlcmVzdGVkIGluIGRldmVsb3BpbmcgY291cnNlcyBmb3IgTWFyaW5lTmV0PyBSZWFkIGFib3V0IDxhIGhyZWY9Imh0dHBzOi8vd3d3LnVzbWN1LmVkdS9jZGV0L21hcmluZW5ldC1kZXYiPkRpZ2l0YWwgQ29udGVudCBEZXZlbG9wbWVudDwvYT4uPC9wPjwvZGl2PjxwPiZuYnNwOzwvcD5kAhsPFgIfBWhkAh0PFgIfCAWZAjxhIGNsYXNzPSJmYXQiIGhyZWY9Ii9NYXJpbmVOZXQvSGVscC9IZWxwLmFzcHgiIHN0eWxlPSJmb250LXdlaWdodDpib2xkOyI+SGVscDwvYT48YnIgLz4NCjxhIGNsYXNzPSJmYXQiIGhyZWY9Ii9NYXJpbmVOZXQvSGVscC9IZWxwLmFzcHgjY29udGFjdCI+Q29udGFjdCBVczwvYT48YnIgLz4NCjxhIGNsYXNzPSJmYXQiIGhyZWY9IiMiIGlkPSJMaW5rVG9Ccm93c2VyVGVzdCIgb25jbGljaz0icmV0dXJuIG9wZW5Ccm93c2VyVGVzdCgpIj5DYXB0dXJlIEJyb3dzZXIgSW5mb3JtYXRpb248L2E+ZAIfDxYCHwhlZAIpDw8WAh8FaGRkAi0PFgIfCAV0Q29sbGVnZSBvZiBEaXN0YW5jZSBFZHVjYXRpb24gJmFtcDsgVHJhaW5pbmc8YnIgLz5NYXJpbmUgQ29ycHMgVW5pdmVyc2l0eTxiciAvPjIwNzYgU291dGggU3Q8YnIgLz5RdWFudGljbywgVkEgMjIxMzRkAi8PDxYCHwgFJiZjb3B5IDIwMTggTWFyaW5lTmV0IERpc3RhbmNlIExlYXJuaW5nZGQCMQ8WAh8IBZoDPGEgaHJlZj0nL21hcmluZW5ldC9wYXNzd29yZHBvbGljeS9kb2R3YXJuaW5nc3RtdC5hc3B4JyB0YXJnZXQ9J19ibGFuaycgc3R5bGU9Jyc+RG9EIFdhcm5pbmcgU3RhdGVtZW50PC9hPiB8IA0KPGEgaHJlZj0nL21hcmluZW5ldC9wYXNzd29yZHBvbGljeS9zZWN1cml0eWFuZHByaXZhY3lzdG10LmFzcHgnIHRhcmdldD0nX2JsYW5rJyBzdHlsZT0nJz5TZWN1cml0eSBhbmQgUHJpdmFjeSBTdGF0ZW1lbnQ8L2E+IHwgDQo8YSBocmVmPSdodHRwOi8vZG9kY2lvLmRlZmVuc2UuZ292L2RvZHNlY3Rpb241MDguYXNweCcgdGFyZ2V0PSdfYmxhbmsnIHN0eWxlPScnPkFjY2Vzc2liaWxpdHk8L2E+IHwgDQo8YSBocmVmPSdtYWlsdG86bG1zaGVscEBzY21zLm5hdnkubWlsJyBzdHlsZT0nJz5Db250YWN0IFdlYm1hc3RlcjwvYT5kAjMPDxYCHwgFBmxtc2lzMWRkAjUPDxYCHwgFCDUuMi4yLjIwZGQCNw8WAh4HRW5hYmxlZGdkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYCBQxjdGwwMCRpYkhvbWUFD2N0bDAwJGJ0blNlYXJjaAUiY3RsMDAkZ2VuSW5mbyRtbkdlbkluZm8kTXVsdGlWaWV3MQ8PZGZkXeuNuU3Hbtx+Z80SvgHSrGKvEOI=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/MarineNet/WebResource.axd?d=8DMDO5zXsY_II5mCZ-2xJLs9OVMaoBZn-i_eufMCW5_yAmtnivSPnz0t7bAAdVepL4rngQDhRChp6VTzNtwEzhUhVuc1&amp;t=636477497180000000" type="text/javascript"></script>
+
+
+<script src="/MarineNet/ScriptResource.axd?d=qQvBgqBHj5xH2wvjPz5bhxhv03DqUE6gO826FYsc7DTwE7pYsLS57qRUcT1xCn_sX2d2OLwQClFfHqyCktl7J-JSBrltDGQuG6KFfXIKyYnwSBFxxUlAGYUHu821C6Yuo6ksvWVVl9-wgVNlNOhEGhIw9ig1&amp;t=6aaf4dc3" type="text/javascript"></script>
+<script src="/MarineNet/ScriptResource.axd?d=qq7hRxAWWaspL1tyFo44OjegTBvPtuOQ5dLaRdkM32aCuPxUfW0PBEzbySY7VasH-B-x-hTXdYoPiIMxDIDfriAgPlMEXtnd2lc2VqRP40ex8ipNKa3onor1h-LUeq1FojiC40NzL2ZCQY4EgcOYp_y3Du8ye-MFidp2HIeaUj3NGO7nLCAziO3_DAReNgta6HsrwyUlK-G_8TdWPLTGnXIjOKLFRKuFXa4GNmxicuDSUFoydY3XaYEiGzUYoW1UptOz_0_WQ7MQgA_1E5kw0rR52SgFOj869N-_zSk79yG7J5nfcqX5RaisKz65d6nm7Ie1UYo5ZQXwt-NthoInr1blw58PsURnid6YpV9k02MFw5jNOQUs7Iwdhxx0aVEkJQZy9Sy_G0xBMhUYCnAOi7dyrIAngfBV47A4E74_lh4BuwwbUKC3TF72viy3CkFOw1_o5EUZ5NlJ6aiwLAbExE4i7SM6ZnIy8N6mp-dxkS_0RcbqTMYP71wIzrNzOK-9IsGLPUb6hBj8QCvX5bPb-D3sFoo8rm3cH6kSK00goGcApprHadDth795NDpHwnxsKJjFOWFsERHCPwIEA8QY81IW5RKVjGR-ffmyY7eUSPIejeBYTeRGSTeofWVdLIpRTTMpdJ7iblh3LjPosKUsqxkIvFmIBOr4-GHioGy09qFb1O4vcSz7wU8qQpMsgatjjYK1U5UA5v3hu7vgfBDYBz1UBbCgZPU3E4ULaWztoy7washLPz8fJd7Nl-4cCgjsgaFi2ZhbiAUyJoawuervZrfKU0_RVwGpoXI0cGT9SBRGGxQvKlt3aXyXt7vxfyT3nuYKDniHzQ95ApXoFY8mocHZPRFz4rLRbLsLXakEYnwsO_YhqG5Sazx4DgUMTWk53dPmIhlN1i79mHmwE7gvcsmykUZA6PzI82GXEkD6uGWcZmgQE97q7EuRT2R2Fo_bPU1RG4NDjL47XLQ3XtkU9sOzZDgX6ap6LmYHFIRyMblgmrgxmKXmJ83MZDjJPiLUJXb6SlYbhk-la-9kPZd4dbPK9pR3_zzRJ4qoSWfr5aJEcNzleXHeng76vnjspP2bPByr5FBASE32hsEbgNl6JianuGOS19Up8FOCBeyI7uhX6oDjvFOFb2R9vA5RV3vQuBukR2tDsUie9aSKTu6ctuTs36dfNFvdcD9Mwgf8chqwC3bGgzD8WjS-tcnY0FT0zS8I65EW-EphsmyG1xcBM06K9qZRtSqqGjZpM2bq0Es0EfWug21e3ttvWqczeCH7646nf6MZt6kv25OOot-03nUlrmfzy0Ikda-KsHBY2lwVUbH3D8Tu14WcAOfsBa7M-Bow-I8uuwi7FUHn_GmzB3ktijQ9TgRVe6XB94yBCWzUFj0OyXz-xafRp4vyJ49C8nVEMQ2" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+null;if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A1708198" />
+	<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0" />
+	<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0" />
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="jCUpdXrx7fPNehfeYl614rcCpg6yL5oTW-SeZlwqsVYLhttpO3nNvWZe_RyGcWywODmAqf1nUe1euXzgsKngPlJl3zY1" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA0ArhjlTptpMOWsXfYFdWp+0cAWv1Pcn+DkFB3LptqSoOPt1qWUDW/Nq87Nip0964dFjI85Psnk3V89zQSMTBPbVXpGQB+5+uolroumqcYWCxvi2K34WnyjG58R650h9Vpf+Eyl+ut7dJ3F4F/KF8wu5VOQFSqLU79gE843MISGmP4IUx92fJw/eTv+y8/+wTa1KXLn0338E5pWvJHjhbTh/wZxwQaqa6HOQRHWCMWzFp+YU/ysTGqWUsCdwhqVBdb6evleRqo/0z+lDdxn1nxy9n5WBgTG09Yt/C5tR9+/+vkLvDU=" />
+</div>
+		<script language="javascript" type="text/javascript">
+			function OpenWin(URL, W, H) {
+				var Features = "width=" + W + ", height=" + H + ", location=no, toolbar=no, menubar=no";
+				window.open(URL, null, Features);
+			}
+		</script>
+
+	    
+        
+		
+		
+		<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+
+<script type="text/javascript" >
+	Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Request_End);
+	function Request_End(sender, args) {
+		if (args.get_error() != undefined) {
+			var errorMessage;
+			if (args.get_response().get_statusCode() == 200) {
+				errorMessage = args.get_error().message;
+			}
+			else {
+				// the server wasn't the problem...
+				errorMessage = 'An unknown error occurred...';
+			}
+			// do something with the errorMessage here.
+			alert(errorMessage);
+			// now make sure the system knows we handled the error.
+			args.set_errorHandled(true);
+		}
+	}
+</script>
+	
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr class="headerTop">
+						<td width="5%">&nbsp;</td>
+						<td rowspan="2" class="headerLogo">
+							<img src="Assets/Images/MarineNetLogo2.png" align="absmiddle" />
+						</td>
+						<td width="20px">&nbsp;</td>
+						<td>
+							<table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td align="left" class="headerTopText">
+										<input type="image" name="ctl00$ibHome" id="ctl00_ibHome" title="Home" src="Assets/Images/icon-home.png" align="middle" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ibHome&quot;, &quot;&quot;, false, &quot;&quot;, &quot;Default.aspx&quot;, false, false))" />
+									</td>
+									<td width="60px">&nbsp;</td>
+									<td align="left" class="headerTopText">
+										<a id="ctl00_HyperLink1" class="headerLink" CausesValidation="false" href="Courses/Catalog.aspx">Course Catalog</a>
+									</td>
+									<td width="60px">&nbsp;</td>
+									<td align="left" class="headerTopText">
+										
+									</td>
+
+									<!-- ripper-->
+									<td width="60px">&nbsp;</td>
+									<td align="left" class="headerTopText">
+										
+                                        
+									</td>
+
+
+
+									<td width="60px">&nbsp;</td>
+									<td align="left" class="headerTopText">
+										
+									</td>
+									<td width="60px">&nbsp;</td>
+									<td align="left" class="headerTopText">
+										
+									</td>
+
+
+
+
+
+
+									<td>&nbsp;</td>
+								</tr>
+							</table>
+						</td>
+						<td width="5%">&nbsp;</td>
+					</tr>
+					<tr class="headerBottom1">
+						<td width="5%">&nbsp;</td>
+						<td width="20px">&nbsp;</td>
+						<td valign="middle" align="left">
+							<table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td align="left">
+										<div id="ctl00_pnlSearch" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_btnSearch&#39;)">
+	
+											<table>
+												<tr>
+													<td valign="top" align="left">
+														<input name="ctl00$txtSearch" type="text" maxlength="500" id="ctl00_txtSearch" class="TextBox" style="border-color:graytext;border-width:2px;border-style:solid;width:300px;" />
+														<input type="hidden" name="ctl00$tbwe1_ClientState" id="ctl00_tbwe1_ClientState" />
+													</td>
+													<td valign="top" align="left">
+														<input type="image" name="ctl00$btnSearch" id="ctl00_btnSearch" Title="Search Course Catalog and Reference Library" src="Assets/Images/SearchBTN.png" alt="Search Course Catalog and Reference Library" align="absmiddle" /><br />
+														<a id="ctl00_hlAdv" href="Search/CatalogSearch.aspx" style="font-size:X-Small;">Advanced Search</a>
+													</td>
+												</tr>
+												<tr>
+													<td valign="bottom" align="left">
+														
+													</td>
+												</tr>
+											</table>
+										
+</div>
+									</td>
+									<td align="right">
+										
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="5%">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr id="ctl00_trContent" style="background-color:#272727;">
+	<td width="5%">&nbsp;</td>
+	<td width="90%">
+							<span id="ctl00_lblMessage"></span>
+							<script type="text/javascript">
+							function Go2Msg() {
+							if (jQuery("#ctl00_lblMessage").contents().length >= 1) {
+							jQuery("#__SCROLLPOSITIONY").val(0);
+							jQuery("body").scrollTop = 0;}}
+							jQuery(document).ready(Go2Msg);
+							</script>
+							
+    <div id="ctl00_content_panLogin" class="darkLink" style="background-color:#272727;">
+		
+        <br />
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td style="color:White; width: 460px; font-family: 'Times New Roman', Times, serif; font-size: large;">
+                    Login to Your Account
+                </td>
+                <td rowspan="2" valign="top">
+                    <table width="395px">
+                        <tr>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 460px">
+                    <table id="ctl00_content_Login1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+			<tr>
+				<td>
+                            <div id="ctl00_content_Login1_pLogin" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_content_Login1_LoginButton&#39;)">
+					
+                                <br/>
+                                <table style="width: 99%; margin-left: 5px;" 
+                                    cellpadding="5" cellspacing="2" >
+                                    <tr>
+                                        <td style="color:White; font-size: small;">
+                                            Username</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle">
+                                            <input name="ctl00$content$Login1$UserName" type="text" maxlength="256" id="ctl00_content_Login1_UserName" class="TextBox" onKeyPress="if(event.keyCode==13) {var oBtn = document.getElementById(&#39;ctl00_content_Login1_LoginButton&#39;); if (oBtn != null) { oBtn.click();} return false}" style="border-color:#CBD1DD;width:340px;" />
+                                            <span id="ctl00_content_Login1_UserNameRequired" title="Username is required." style="color:Red;visibility:hidden;">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:White; font-size: small;">
+                                            Password&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle">
+                                            <input name="ctl00$content$Login1$Password" type="password" id="ctl00_content_Login1_Password" class="TextBox" autocomplete="off" onKeyPress="if(event.keyCode==13) {var oBtn = document.getElementById(&#39;ctl00_content_Login1_LoginButton&#39;); if (oBtn != null) { oBtn.click();}  return false}" style="border-color:#CBD1DD;width:340px;" />
+                                            <span id="ctl00_content_Login1_PasswordRequired" title="Password is required." style="color:Red;visibility:hidden;">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a id="ctl00_content_Login1_PasswordRecoveryLink" href="RecoverPassword.aspx">Forgot Username or Password?</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" name="ctl00$content$Login1$LoginButton" value="Log In" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$content$Login1$LoginButton&quot;, &quot;&quot;, true, &quot;ctl00_Login1&quot;, &quot;&quot;, false, false))" id="ctl00_content_Login1_LoginButton" class="Button" />&nbsp;&nbsp;
+                                           <input type="submit" name="ctl00$content$Login1$LoginButtonCAC" value="CAC Log In" onclick="return ClearAuth();" id="LoginButtonCAC" class="Button" /> 
+                                            <span id="browserMsg" style="color:White;">In order to login with your CAC, you must close your browser and restart the MarineNet web site.</span>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #FFFFFF; font-size: x-small;">
+                                            Don&#39;t Have an Account?
+                                            <a id="ctl00_content_Login1_CreateUserLink" href="EditProfile.aspx">Sign Up for a New MarineNet Account</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            
+				</div>
+                        </td>
+			</tr>
+		</table>
+                </td>
+            </tr>
+        </table>
+    
+	</div>
+    <script type="text/javascript" >
+        jQuery(document).ready(function () {
+            var isIE = false;
+            var isEdge = false;
+            isIE = /*@cc_on!@*/false || !!document.documentMode; // Internet Explorer 6-11
+            isEdge = !isIE && !!window.StyleMedia; // Edge 20+
+            if ((isIE == false) && (isEdge == false)) {
+                jQuery(document.getElementById("LoginButtonCAC")).remove();
+            } else {
+                jQuery(document.getElementById("browserMsg")).remove();
+            }
+        });
+
+        function ClearAuth() {
+            document.execCommand('ClearAuthenticationCache', 'false');
+            window.location.reload();
+            return false;
+        }
+    </script>
+
+
+							<br />
+						</td>
+	<td width="5%">&nbsp;</td>
+</tr>
+
+					
+						<tr style="background-image:url('Assets/Images/anon-footer-background.png'); background-repeat: repeat-x;">
+							<td width="5%">&nbsp;</td>
+							<td style="vertical-align:top;">
+								<br />
+								
+<input type="hidden" name="ctl00$genInfo$mnGenInfo$tmTabs$hdToolTips" id="ctl00_genInfo_mnGenInfo_tmTabs_hdToolTips" />
+
+<table id="ctl00_genInfo_mnGenInfo_tmTabs_tblButtons" cellspacing="0" cellpadding="0" style="border-style:None;width:100%;border-collapse:collapse;">
+	<tr style="height:22px;">
+		<td style="height:22px;"><table cellspacing="0" cellpadding="0" style="border-style:None;width:100%;border-collapse:collapse;">
+			<tr id="ctl00_genInfo_mnGenInfo_tmTabs_trTabs" style="height:22px;">
+				<td id="ctl00_genInfo_mnGenInfo_tmTabs_cell0" class="BWSelectedTopBorder" align="center" style="height:21px;width:1px;padding-left:5px;padding-right:5px;"><a id="ctl00_genInfo_mnGenInfo_tmTabs_btn0" href="javascript:__doPostBack(&#39;ctl00$genInfo$mnGenInfo$tmTabs$btn0&#39;,&#39;&#39;)" style="white-space:nowrap;">GETTING ACCESS</a></td><td class="SepBorder" style="height:21px;width:3px;">&nbsp;</td><td id="ctl00_genInfo_mnGenInfo_tmTabs_cell1" class="BWTopBorder" align="center" style="height:21px;width:1px;padding-left:5px;padding-right:5px;"><a id="ctl00_genInfo_mnGenInfo_tmTabs_btn1" href="javascript:__doPostBack(&#39;ctl00$genInfo$mnGenInfo$tmTabs$btn1&#39;,&#39;&#39;)" style="white-space:nowrap;">RELATED RESOURCES</a></td><td class="SepBorder" style="height:21px;width:3px;">&nbsp;</td><td id="ctl00_genInfo_mnGenInfo_tmTabs_cell2" class="BWTopBorder" align="center" style="height:21px;width:1px;padding-left:5px;padding-right:5px;"><a id="ctl00_genInfo_mnGenInfo_tmTabs_btn2" href="javascript:__doPostBack(&#39;ctl00$genInfo$mnGenInfo$tmTabs$btn2&#39;,&#39;&#39;)" style="white-space:nowrap;">COURSE DEVELOPMENT</a></td><td class="SepBorder" style="height:21px;">&nbsp;</td>
+			</tr>
+		</table></td>
+	</tr><tr>
+		<td id="ctl00_genInfo_mnGenInfo_tmTabs_tcBanner" class="BWTopBorderBanner" class="TopBorderBanner" style="padding:3px;">
+            &nbsp;<span id="ctl00_genInfo_mnGenInfo_tmTabs_lblBanner" class="darkLink"></span></td>
+	</tr>
+</table>
+
+
+        <p><script type="text/javascript">    (function(){     if(window.addEventListener) window.addEventListener("load", fixOtherPortalsLink, false);     else if(window.attachEvent) window.attachEvent("onload", fixOtherPortalsLink);     function fixOtherPortalsLink(evt){      var right = document.getElementById("ctl00_tdRightColumn");      if(!right) return;      var a = right.getElementsByTagName("a");      for(var i=0; i<a.length; i++)      {       if(a[i].href.charAt(a[i].href.length-1) == "#" && a[i].innerHTML == "Portals")       {        a[i].target = "";        a[i].className += " LinkEmphasis";        if(a[i].style) a[i].style.textDecoration = "none";        window.addEventListener ? a[i].addEventListener("click", cancelLink, false) : a[i].attachEvent("onclick", cancelLink);        break;       }      }     }     function cancelLink(evt)     {      evt = evt || window.event;      var a = evt.target || evt.srcElement;      evt.preventDefault ? evt.preventDefault() : evt.returnValue = false;      evt.stopPropagation ? evt.stopPropagation() : evt.cancelBubble = true;     }    })();   </script><style type="text/css">.cdet h2{margin:1.625em 0}.cdet ol,.cdet ul{margin-left:0;padding-left:1.25em}.cdet ol{padding-left:2em}.cdet abbr,.cdet acronym{border-bottom:0}   #ctl00_content_dvTMRequest{margin-top:-2.5em}</style></p>
+<script type="text/javascript">      var _gaq = _gaq || [];    _gaq.push(['_setAccount', 'UA-17711558-1']);    _gaq.push(['_trackPageview']);      (function() {      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);    })();    </script>
+<div class="cdet">
+<p>If you are a civilian or non-DoD individual and you would like a MarineNet account, please Sign Up for a New MarineNet Account <a href="EditProfile.aspx">requesting a MarineNet account</a>. Your eligibility information will be verified against the Defense Enrollment Eligibility Reporting System (DEERS). If you are registered in the <acronym title="Defense Enrollment Eligibility Reporting System">DEERS</acronym>, you will likely have access to MarineNet. If you are not in <acronym title="Defense Enrollment Eligibility Reporting System">DEERS</acronym>, an alternate path for MarineNet Account creation is also available through the Sign Up for a New MarineNet Account process. </p>
+<p>Once you have logged into MarineNet, you can access the Actions menu on the left navigation bar to access your transcript and the course catalog. MarineNet News and Information is accessible from the right navigation bar. Learn about the latest MarineNet has to offer by reviewing these articles.</p>
+<p>Will your computer support courseware? Check out the <a href="portal/PageView.aspx?pg=ComputerRequirements.aspx">MarineNet Software Baseline Requirements</a>.</p>
+<h2>Learning Resource Centers</h2>
+<p>Access to electronic courseware is available from any network-connected <abbr title="personal computer">PC</abbr>. However, the <abbr title="College of Distance Education and Training">CDET</abbr> has fielded <span class="obsoletes">more than 40</span> learning resource centers (LRCs) to provide service to Marines who do not have a computer available to them regularly. For a complete list of learning resource centers and their locations, visit the <a href="portal/PageView.aspx?pg=Locations.aspx"><abbr title="Learning Resource Center">LRC</abbr> Site Listing</a>.</p>
+<p style="display:none">The deployable learning resource center (DLRC) is a hardware component of the Marine Corps Distance Learning Program (MCDLP) that provides Marines with access to electronic courseware while they are deployed aboard ship or from remote locations ashore. The system offers the same functionality as fixed-site <abbr title="Learning Resource Center">LRC</abbr>s at Marine Corps bases and stations, and incorporates a modular design for maximum configuration flexibility.</p>
+<p>Read more about <a href="portal/PageView.aspx?pg=LRCs_DLRCs.aspx">Learning Resource Centers</a>.</p>
+</div>
+<p>&nbsp;</p>
+    
+
+							</td>
+							<td width="5%">&nbsp;</td>
+						</tr>
+					
+				</table>
+			</td>
+		</tr>
+		<tr class="footerBorder1">
+			<td>&nbsp;</td>
+		</tr>
+		<tr bgcolor="#F1F1E9">
+			<td>
+				<br />
+				<table width="100%" cellpadding="0" cellspacing="10">
+					<tr>
+						<td width="5%">&nbsp;</td>
+						<td id="ctl00_ffCatalog" valign="top">
+							<a class="fat" href="Courses/Catalog.aspx" style="font-weight:bold;">Course Catalog</a><br />
+						<a class="fat" href="Courses/Catalog.aspx?select=e7d16b24-f75e-4685-bc40-0175f13e21bb">Military Training</a><br/><a class="fat" href="Courses/Catalog.aspx?select=d38ea77c-68dc-4ae7-9804-4d5407020aa4">Professional Military Education (PME)</a><br/><a class="fat" href="Courses/Catalog.aspx?select=2e64a56d-d9c3-483f-bd37-7a92fee16d66">Language and Culture</a><br/><a class="fat" href="Courses/Catalog.aspx?select=5a707660-9af3-45b1-afd6-44fddf486347">Family and Personal</a><br/><a class="fat" href="Courses/Catalog.aspx?select=6ddd34d6-073b-437c-b5a6-04f81122a8c0">Civilian Workforce Training</a><br/><a class="fat" href="Courses/Catalog.aspx?select=508aeaa4-6cbc-4a81-b00f-ab6119e37198">Professional Development Courses</a><br/></td>
+
+						
+						<td valign="top">
+							<a class="fat" href="/MarineNet/Help/Help.aspx" style="font-weight:bold;">Help</a><br />
+<a class="fat" href="/MarineNet/Help/Help.aspx#contact">Contact Us</a><br />
+<a class="fat" href="#" id="LinkToBrowserTest" onclick="return openBrowserTest()">Capture Browser Information</a>
+						</td>
+						<td valign="top">							
+							
+						</td>
+						<td valign="top">
+							<span class="footerHead">MarineNet</span><br />
+							<a class="fat" href="GeneralInformation.aspx?select=AccessView">Getting Access</a><br />
+							<a class="fat" href="GeneralInformation.aspx?select=ResourcesView">Related Resources</a><br />
+							<a class="fat" href="GeneralInformation.aspx?select=DevelopmentView">Course Development</a><br />
+							
+							
+						</td>
+						<td width="5%">&nbsp;</td>
+					</tr>
+				</table>
+				<br />
+			</td>
+		</tr>
+		<tr class="footerBorder2">
+			<td>&nbsp;</td>
+		</tr>
+		<tr bgcolor="#CCCBB7">
+			<td>
+				<table width="100%" cellpadding="0" cellspacing="10">
+					<tr>
+						<td width="5%">&nbsp;</td>
+						<td valign="middle">
+							<img src="Assets/Images/logo_cdet.png" align="absmiddle" style="background-color:Transparent;" />
+						</td>
+						<td valign="top" align="left" style="font: 12px arial, sans-serif; border-right: solid thin #E2E2D6;">
+							United States Marine Corps<br />
+							College of Distance Education &amp; Training<br />Marine Corps University<br />2076 South St<br />Quantico, VA 22134<br />
+							<span id="ctl00_lblCopyright">&copy 2018 MarineNet Distance Learning</span>
+						</td>
+						<td width="45%" valign="top" align="left" style="font-size:small;">
+							<a href='/marinenet/passwordpolicy/dodwarningstmt.aspx' target='_blank' style=''>DoD Warning Statement</a> | 
+<a href='/marinenet/passwordpolicy/securityandprivacystmt.aspx' target='_blank' style=''>Security and Privacy Statement</a> | 
+<a href='http://dodcio.defense.gov/dodsection508.aspx' target='_blank' style=''>Accessibility</a> | 
+<a href='mailto:lmshelp@scms.navy.mil' style=''>Contact Webmaster</a>
+							<br />
+							All records maintained on this website are <b>FOR OFFICIAL USE ONLY</b>.<br />
+							Some web pages contain personal private information. Any misuse or unauthorized disclosure may result in both civil and criminal penalties.<br /><br />
+							<span class="fieldlabel">Server: &nbsp;</span><span id="ctl00_lblSvr">lmsis1</span>
+							<span class="fieldlabel">Version:&nbsp;</span><span id="ctl00_lblVer">5.2.2.20</span>
+						</td>
+						<td width="5%">&nbsp;</td>
+					</tr>
+				</table>             
+			</td>
+		</tr>
+	</table>
+
+</form>
+
+</body>
+</html>
